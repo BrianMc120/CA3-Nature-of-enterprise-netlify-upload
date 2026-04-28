@@ -3,6 +3,7 @@ import { Fraunces, Lexend } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "./_components/AuthProvider";
 import { SettingsProvider } from "./_components/SettingsProvider";
+import GlobalKeyboardShortcuts from "./_components/GlobalKeyboardShortcuts";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -41,6 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SettingsProvider>
           <AuthProvider>{children}</AuthProvider>
         </SettingsProvider>
+        <GlobalKeyboardShortcuts />
       </body>
     </html>
   );

@@ -5,6 +5,7 @@ import ProtectedPage from "../_components/ProtectedPage";
 import { useAuth } from "../_components/AuthProvider";
 import { getRecommendedEvents } from "@/lib/recommendations";
 import { EVENTS } from "@/lib/mockData";
+import { useArrowNav } from "../_components/useArrowNav";
 
 const MENU_CARDS = [
   { href: "/timetable", label: "My Timetable", desc: "Classes, tutorials, labs and exams",   icon: "📅", bg: "bg-amber-50",   ring: "ring-amber-200",   accent: "text-amber-800" },
@@ -20,6 +21,7 @@ const MENU_CARDS = [
 export default function DashboardPage() {
   const { user } = useAuth();
   const recommended = user ? getRecommendedEvents(user, EVENTS).slice(0, 2) : [];
+  const handleGridKeyDown = useArrowNav("grid");
 
   const today = new Date().toLocaleDateString("en-IE", {
     weekday: "long", day: "numeric", month: "long",
@@ -52,11 +54,12 @@ export default function DashboardPage() {
           Where to next?
         </h2>
         <nav aria-label="App sections">
-          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" role="list">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" role="list" onKeyDown={handleGridKeyDown}>
             {MENU_CARDS.map((card) => (
               <li key={card.href}>
                 <Link
                   href={card.href}
+                  data-kbd-item
                   className={`block ${card.bg} rounded-2xl p-6 ring-1 ${card.ring} hover:shadow-md hover:-translate-y-0.5 transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-orange-500 focus-visible:ring-offset-2 hc-card`}
                   aria-label={`${card.label}: ${card.desc}`}
                 >

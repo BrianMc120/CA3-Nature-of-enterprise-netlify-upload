@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "./AuthProvider";
+import { useArrowNav } from "./useArrowNav";
 
 const NAV_LINKS = [
   { href: "/dashboard",  label: "Home",       icon: "🏠" },
@@ -20,6 +21,7 @@ export default function NavBar() {
   const pathname = usePathname();
   const router   = useRouter();
   const { user, logout } = useAuth();
+  const handleNavKeyDown = useArrowNav("horizontal");
 
   function handleLogout() {
     logout();
@@ -70,6 +72,7 @@ export default function NavBar() {
           <ul
             className="flex gap-1 overflow-x-auto pb-0.5 scrollbar-none"
             role="list"
+            onKeyDown={handleNavKeyDown}
           >
             {NAV_LINKS.map((link) => {
               const active = pathname === link.href;
@@ -77,6 +80,7 @@ export default function NavBar() {
                 <li key={link.href} className="shrink-0">
                   <Link
                     href={link.href}
+                    data-kbd-item
                     aria-current={active ? "page" : undefined}
                     className={`inline-flex items-center gap-2 px-4 py-2.5 text-base rounded-t-xl border-b-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:ring-offset-2 whitespace-nowrap min-h-[44px] ${
                       active
