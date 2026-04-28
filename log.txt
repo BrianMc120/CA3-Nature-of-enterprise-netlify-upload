@@ -1,0 +1,43 @@
+ROLE: i am a first year in college doing final assignment for nature of enterprise
+CONTEXT: We are building a Campus Companion web app for first-year students.
+CONSTRAINTS:
+- Next.js (App Router), TypeScript
+- Serverless backend:Netlify Functions 
+- Accessibility: WCAG AA principles, keyboard-first
+- Data: fictional only (no real personal data)
+TASK: i need ypu to take this and make me from scratch a new app to use this one has been failing too much and has wasted too much time
+OUTPUT FORMAT: Provide (1) files to create/edit, (2) code only, (3) brief test steps.
+SELF-CHECK: After code, list likely accessibility issues and fixes. (4) files to download
+
+
+ROLE: i am a first year in college doing final assignment for nature of enterprise
+CONTEXT: We are building a Campus Companion web app for first-year students.
+CONSTRAINTS:
+- Next.js (App Router), TypeScript
+- Serverless backend:Netlify Functions 
+- Accessibility: WCAG AA principles, keyboard-first
+- Data: fictional only (no real personal data)
+TASK i want to run this natively when i go live it is just a menu help me run it local instedad of having to use netlify. help me enable anything too
+OUTPUT FORMAT: Provide (1) files to create/edit, (2) code only, (3) brief test steps.
+SELF-CHECK: After code, list likely accessibility issues and fixes. (4) files to download
+
+User email & password						Authenticating the information and matching it to the system user and password	Allow user to login into the system account
+Student timetable						Retrieve timetable information from university system	Display classes schedule, times, location and exams timetable
+Student profile data such as (name, profile, preferences)	Match the profile information to relevant campus activities and societies	Display personalized recommendations (ML)
+Feedback 							System stores and analyses feedback for review	Confirmation message that the feedback has been submitted
+Support request							System storing the request for review		Display a message that the request has been submitted
+Event applications and attendance 				System analyses student’s preferences	Recommending related events
+Course data & year						Retrieve course information from university system	Display course information, timetable and exams
+Study room booking						System checks availability and stores booking	Showing booking confirmation message
+Event registration 						form	Systems save the booking and register the student	Display confirmation message 
+		
+ROLE: i am a first year in college doing final assignment for nature of enterprise
+CONTEXT: We are building a Campus Companion web app for first-year students.
+CONSTRAINTS:
+- Next.js (App Router), TypeScript
+- Serverless backend:Netlify Functions 
+- Accessibility: WCAG AA principles, keyboard-first
+- Data: fictional only (no real personal data)
+TASK i need you to now remake the app. i want a warm inviting design. make it readable some text was small in boxes. also add a tab for users to change accessibility setting like text size and other changes needed for challenges users may have
+OUTPUT FORMAT: Provide (1) files to create/edit, (2) code only, (3) brief test steps.
+SELF-CHECK: After code, list likely accessibility issues and fixes. (4) files to download
