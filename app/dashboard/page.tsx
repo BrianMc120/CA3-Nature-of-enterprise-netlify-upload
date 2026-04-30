@@ -16,6 +16,7 @@ const MENU_CARDS = [
   { href: "/feedback",  label: "Feedback",      desc: "Share your thoughts with us",         icon: "💬", bg: "bg-yellow-50",  ring: "ring-yellow-200",  accent: "text-yellow-800" },
   { href: "/support",   label: "Get Support",  desc: "Submit a help request",                icon: "🆘", bg: "bg-red-50",     ring: "ring-red-200",     accent: "text-red-800" },
   { href: "/settings",  label: "Accessibility", desc: "Adjust text size, contrast and more", icon: "⚙️", bg: "bg-indigo-50",  ring: "ring-indigo-200",  accent: "text-indigo-800" },
+  { href: "/ml",        label: "ML Insights",   desc: "Subject clustering powered by machine learning", icon: "🤖", bg: "bg-violet-50",  ring: "ring-violet-200",  accent: "text-violet-800" },
 ];
 
 export default function DashboardPage() {
