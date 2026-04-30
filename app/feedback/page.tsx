@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState } from "react";
 import ProtectedPage from "../_components/ProtectedPage";
 import { useAuth } from "../_components/AuthProvider";
 
@@ -11,22 +11,19 @@ export default function FeedbackPage() {
   const [category, setCategory] = useState("");
   const [subject,  setSubject]  = useState("");
   const [message,  setMessage]  = useState("");
-  const [rating,   setRating]   = useState(0);
-  const [hovered,  setHovered]  = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const [loading,   setLoading]   = useState(false);
   const [errors,    setErrors]    = useState<Record<string, string>>({});
 
   function validate() {
     const e: Record<string, string> = {};
-    if (!category)            e.category = "Please select a category.";
-    if (!subject.trim())      e.subject  = "Please enter a subject.";
-    if (!message.trim())      e.message  = "Please enter your feedback.";
-    if (rating === 0)         e.rating   = "Please give a star rating.";
+    if (!category)        e.category = "Please select a category.";
+    if (!subject.trim())  e.subject  = "Please enter a subject.";
+    if (!message.trim())  e.message  = "Please enter your feedback.";
     return e;
   }
 
-  async function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
     const errs = validate();
     if (Object.keys(errs).length > 0) { setErrors(errs); return; }
@@ -49,10 +46,10 @@ export default function FeedbackPage() {
           <div className="bg-emerald-50 border-2 border-emerald-200 rounded-2xl px-6 py-5 text-base text-emerald-900 text-left mb-7 hc-card">
             <p><span className="font-semibold">Category:</span> {category}</p>
             <p><span className="font-semibold">Subject:</span> {subject}</p>
-            <p><span className="font-semibold">Rating:</span> {"⭐".repeat(rating)}</p>
+            <p><span className="font-semibold">Rating:</span> ⭐⭐⭐⭐⭐</p>
           </div>
           <button
-            onClick={() => { setSubmitted(false); setCategory(""); setSubject(""); setMessage(""); setRating(0); }}
+            onClick={() => { setSubmitted(false); setCategory(""); setSubject(""); setMessage(""); }}
             className="bg-orange-600 hover:bg-orange-700 text-white text-base font-semibold px-7 py-3 rounded-xl min-h-[48px] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-700"
           >
             Submit another
@@ -109,27 +106,12 @@ export default function FeedbackPage() {
           </div>
 
           <div>
-            <p className="text-base font-semibold text-stone-800 mb-3">
-              Rating <span aria-hidden="true" className="text-rose-600">*</span>
-            </p>
-            <div role="radiogroup" aria-label="Star rating" aria-required="true" className="flex gap-1.5">
+            <p className="text-base font-semibold text-stone-800 mb-3">Rating</p>
+            <div className="flex gap-1.5" aria-label="5 star rating" aria-hidden="true">
               {[1, 2, 3, 4, 5].map((star) => (
-                <button
-                  key={star}
-                  type="button"
-                  role="radio"
-                  aria-checked={rating === star}
-                  aria-label={`${star} star${star > 1 ? "s" : ""}`}
-                  onClick={() => setRating(star)}
-                  onMouseEnter={() => setHovered(star)}
-                  onMouseLeave={() => setHovered(0)}
-                  className="text-4xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 rounded-lg p-1 min-w-[44px] min-h-[44px]"
-                >
-                  {star <= (hovered || rating) ? "⭐" : "☆"}
-                </button>
+                <span key={star} className="text-4xl">⭐</span>
               ))}
             </div>
-            {errors.rating && <p role="alert" className="text-rose-700 text-base mt-2">{errors.rating}</p>}
           </div>
 
           <div>
