@@ -123,7 +123,7 @@ export default function FeedbackPage() {
                   onClick={() => setRating(star)}
                   onMouseEnter={() => setHovered(star)}
                   onMouseLeave={() => setHovered(0)}
-                  className="text-4xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 rounded-lg p-1 transition-transform hover:scale-110 min-w-[44px] min-h-[44px]"
+                  className="text-4xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 rounded-lg p-1 min-w-[44px] min-h-[44px]"
                 >
                   {star <= (hovered || rating) ? "⭐" : "☆"}
                 </button>

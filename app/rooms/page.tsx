@@ -6,8 +6,9 @@ import { useAuth } from "../_components/AuthProvider";
 import { STUDY_ROOMS, ROOM_TIME_SLOTS } from "@/lib/mockData";
 import type { StudyRoom } from "@/lib/types";
 
-function isAvailable(roomId: string, slotIndex: number): boolean {
-  const seed = roomId.charCodeAt(1) + slotIndex * 7;
+function isAvailable(roomId: string, slotIndex: number, date: string): boolean {
+  const dateSeed = date.split("-").reduce((acc, p) => acc + parseInt(p), 0);
+  const seed = roomId.charCodeAt(1) + slotIndex * 7 + dateSeed;
   return seed % 3 !== 0;
 }
 
@@ -65,7 +66,7 @@ export default function RoomsPage() {
 
             <div role="group" aria-label={`Time slots for ${room.name}`} className="flex flex-wrap gap-2.5">
               {ROOM_TIME_SLOTS.map((slot, idx) => {
-                const avail    = isAvailable(room.id, idx);
+                const avail    = isAvailable(room.id, idx, date);
                 const isBooked = confirmed?.roomId === room.id && confirmed?.time === slot;
                 const selected = booking?.roomId === room.id && booking?.time === slot;
                 return (

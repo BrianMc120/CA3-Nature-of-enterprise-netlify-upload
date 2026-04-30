@@ -75,7 +75,7 @@ export default function NavBar() {
             onKeyDown={handleNavKeyDown}
           >
             {NAV_LINKS.map((link) => {
-              const active = pathname === link.href;
+              const active = pathname.replace(/\/$/, "") === link.href;
               return (
                 <li key={link.href} className="shrink-0">
                   <Link
